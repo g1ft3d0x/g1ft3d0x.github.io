@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  --color-base: #0d1316;
+  --color-surface: #111b20;
+  --color-primary: #03e98b;
+  --color-glow: rgba(3, 233, 139, 0.25);
+  --color-border: #1a2e38;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-base);
+  color: #e8fff5;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* スキャンライン効果 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* スクロールバー */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* 選択ハイライト */
+::selection {
+  background: rgba(3, 233, 139, 0.3);
+  color: #e8fff5;
+}
+
+/* グロー効果ユーティリティ */
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px rgba(3, 233, 139, 0.6), 0 0 20px rgba(3, 233, 139, 0.3);
+  }
+  .border-glow {
+    box-shadow: 0 0 10px rgba(3, 233, 139, 0.2), inset 0 0 10px rgba(3, 233, 139, 0.05);
+  }
+  .font-mono-display {
+    font-family: 'Space Mono', monospace;
+  }
+  .font-code {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* グリッチアニメーション */
+@keyframes glitch-clip-1 {
+  0%, 90%, 100% { clip-path: inset(0 0 100% 0); }
+  92% { clip-path: inset(20% 0 50% 0); transform: translate(-3px, 0); }
+  94% { clip-path: inset(60% 0 10% 0); transform: translate(3px, 0); }
+  96% { clip-path: inset(40% 0 30% 0); transform: translate(-2px, 0); }
+  98% { clip-path: inset(10% 0 70% 0); transform: translate(2px, 0); }
+}
+@keyframes glitch-clip-2 {
+  0%, 90%, 100% { clip-path: inset(0 0 100% 0); }
+  92% { clip-path: inset(60% 0 10% 0); transform: translate(3px, 0); }
+  94% { clip-path: inset(20% 0 50% 0); transform: translate(-3px, 0); }
+  96% { clip-path: inset(70% 0 5% 0); transform: translate(2px, 0); }
+  98% { clip-path: inset(30% 0 40% 0); transform: translate(-2px, 0); }
+}
+
+.glitch {
+  position: relative;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.glitch::before {
+  color: #03e98b;
+  animation: glitch-clip-1 4s infinite;
+  opacity: 0.8;
+}
+.glitch::after {
+  color: #ff4566;
+  animation: glitch-clip-2 4s infinite 0.1s;
+  opacity: 0.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch::before,
+  .glitch::after {
+    animation: none;
+  }
+}

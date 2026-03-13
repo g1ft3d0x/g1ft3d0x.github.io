@@ -1,0 +1,19 @@
+# 依存パッケージ
+node_modules/
+
+# Next.js ビルド成果物
+.next/
+out/
+
+# 環境変数・シークレット
+.env
+.env.local
+.env.*.local
+
+# Claude Code ローカル設定（絶対パス・許可コマンド履歴を含む）
+.claude/settings.local.json
+
+# OS・エディタ
+.DS_Store
+Thumbs.db
+*.log
