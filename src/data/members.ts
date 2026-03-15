@@ -34,7 +34,7 @@ export const members: Member[] = [
     name: "JUCK",
     role: "Admin",
     specialties: ["Rev", "Forensics", "Quantum", "Network", "AI/ML"],
-    stacks: ["dotnet", "typescript", "linux", "docker"],
+    stacks: ["dotnet", "typescript", "kali", "linux", "docker"],
     about: "自称G1FT3Dの顧問。広く浅く触ってます",
     link: {
       github: "https://github.com/JUCK-Kurohasu",
@@ -45,9 +45,9 @@ export const members: Member[] = [
   {
     name: "Lua",
     role: "Admin",
-    specialties: ["Crypto"],
-    stacks: ["python", "rust"],
-    about: "暗号専門。RSAから楕円曲線まで対応。格子暗号も勉強中。",
+    specialties: ["Web", "Crypto"],
+    stacks: ["python", "html", "css", "js"],
+    about: "広報担当。デザインも作れます",
     link: {
       github: "https://github.com/lua-yuus2",
       twitter: "https://twitter.com/lua_yuus2",
